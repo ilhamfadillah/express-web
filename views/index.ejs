@@ -1,11 +1,28 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
-  </body>
+
+<head>
+  <title><%= title %></title>
+  <link rel="stylesheet" href="./css_bootstrap/bootstrap.min.css">
+</head>
+
+<body>
+  <div class="container">
+    <div class="row mt-4 justify-content-md-center">
+      <div class="card" style="width: 50vw;">
+        <img class="card-img-top" src="https://image.shutterstock.com/image-vector/welcome-poster-spectrum-brush-strokes-260nw-1146069941.jpg" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title">Menu</h5>
+          <div>
+            <a href="/users">Users Page</a>
+          </div>
+          <div>
+            <a href="/books">Books Page</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
 </html>
