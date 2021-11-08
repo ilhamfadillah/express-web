@@ -2,6 +2,8 @@
 const {
   Model
 } = require('sequelize');
+const bcrypt = require('bcrypt');
+const saltRound = 10;
 module.exports = (sequelize, DataTypes) => {
   class User extends Model {
     /**
@@ -14,9 +16,33 @@ module.exports = (sequelize, DataTypes) => {
     }
   };
   User.init({
-    firstName: DataTypes.STRING,
-    lastName: DataTypes.STRING,
-    email: DataTypes.STRING
+    name: {
+      type: DataTypes.STRING,
+      validate: {
+        isNull: false
+      }
+    },
+    email: {
+      type: DataTypes.STRING,
+      validate: {
+        isEmail: true,
+        isNull: false,
+        unique: true,
+      },
+      set(value) {
+        this.setDataValue('email', value.toLowerCase())
+      }
+    },
+    password: {
+      type: DataTypes.STRING,
+      validate: {
+        isNull: false,
+        len: [8,100],
+      },
+      set(value) {
+        this.setDataValue('password', bcrypt.hashSync(value, saltRound))
+      }
+    }
   }, {
     sequelize,
     modelName: 'User',

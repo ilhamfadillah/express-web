@@ -22,7 +22,6 @@ router.post('/add', async function(req, res, next) {
     let name = req.body.name;
     let author = req.body.author;
     let errors = false;
-    console.log("AUTHOR = " + author);
     if (!name || !author) {
         errors = true;
         req.flash('error', 'Please enter name and author');

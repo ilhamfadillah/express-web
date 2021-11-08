@@ -12,9 +12,9 @@ module.exports = {
       var setData = [];
       for (let i = 0; i < 10; i++) {
         setData.push({
-          firstName: faker.name.firstName(),
-          lastName: faker.name.lastName(),
+          name: faker.name.firstName(),
           email: faker.internet.email().toLowerCase(),
+          password: "password",
         });
       }
       await User.bulkCreate(setData);
